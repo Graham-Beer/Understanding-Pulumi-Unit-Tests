@@ -1,4 +1,51 @@
-# Pulumi: Unit Tests in Go
+# Pulumi: Unit Tests in Pulumi with Go
+
+## Introduction
+Contains a simple Pulumi project to build an EC2 and unit test written with Go to test two areas of the build **before** Pulumi Up is run.
+The two tests contained in the **main_test.go** are:
+* Test if the service has tags and a name tag.
+* Test if port 22 for ssh is exposed.
+
+## Test results
+
+A run of **Go test -v** command when these elements are exposed or not contained, has the standard output:
+
+```
+=== RUN   TestInfrastructure
+    main_test.go:56: 
+        	Error Trace:	/mnt/c/Projects/Pulumi_ec2_test/main_test.go:56
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:586
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:370
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:494
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:606
+        	            				/mnt/c/Projects/Pulumi_ec2_test/asm_amd64.s:1598
+        	Error:      	Should be false
+        	Test:       	TestInfrastructure
+        	Messages:   	illegal SSH port 22 open to the Internet (CIDR 0.0.0.0/0) on group urn:pulumi:stack::project::aws:ec2/securityGroup:SecurityGroup::web-secgrp
+    main_test.go:37: 
+        	Error Trace:	/mnt/c/Projects/Pulumi_ec2_test/main_test.go:37
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:586
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:370
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:494
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:606
+        	            				/mnt/c/Projects/Pulumi_ec2_test/asm_amd64.s:1598
+        	Error:      	map[string]string(nil) does not contain "Name"
+        	Test:       	TestInfrastructure
+        	Messages:   	missing a Name tag on server urn:pulumi:stack::project::aws:ec2/instance:Instance::web-server-www
+--- FAIL: TestInfrastructure (0.01s)
+FAIL
+exit status 1
+FAIL	Pulumi_ec2_test	1.325s
+```
+
+Corrections made to the file returns:
+```
+=== RUN   TestInfrastructure
+--- PASS: TestInfrastructure (0.00s)
+PASS
+ok  	Pulumi_ec2_test	0.977s
+
+```
 
 ## Code breakdown
 
@@ -84,3 +131,7 @@ The `.Done()` function lets the WaitGroup know it has completed. (Blocked until 
 ## Completion
 
 The last part is the Test function runs a `assert.NoError(t, err)` check.
+
+## Summary
+The advantage of running unit tests allow us to mock situations to test if the code meets the requirements.
+By running the unit tests before Pulumi Up is run allows us to *fail fast*.
