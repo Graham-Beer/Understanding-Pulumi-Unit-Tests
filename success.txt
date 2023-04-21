@@ -1,0 +1,4 @@
+=== RUN   TestInfrastructure
+--- PASS: TestInfrastructure (0.00s)
+PASS
+ok  	Pulumi_ec2_test	0.977s

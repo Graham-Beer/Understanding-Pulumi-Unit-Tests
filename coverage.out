@@ -1,0 +1,6 @@
+mode: set
+Pulumi_ec2_test/main.go:13.73,30.16 2 1
+Pulumi_ec2_test/main.go:30.16,32.3 1 0
+Pulumi_ec2_test/main.go:34.2,42.16 3 1
+Pulumi_ec2_test/main.go:42.16,44.3 1 0
+Pulumi_ec2_test/main.go:46.2,49.8 1 1

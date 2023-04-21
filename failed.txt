@@ -1,0 +1,25 @@
+=== RUN   TestInfrastructure
+    main_test.go:56: 
+        	Error Trace:	/mnt/c/Projects/Pulumi_ec2_test/main_test.go:56
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:586
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:370
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:494
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:606
+        	            				/mnt/c/Projects/Pulumi_ec2_test/asm_amd64.s:1598
+        	Error:      	Should be false
+        	Test:       	TestInfrastructure
+        	Messages:   	illegal SSH port 22 open to the Internet (CIDR 0.0.0.0/0) on group urn:pulumi:stack::project::aws:ec2/securityGroup:SecurityGroup::web-secgrp
+    main_test.go:37: 
+        	Error Trace:	/mnt/c/Projects/Pulumi_ec2_test/main_test.go:37
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:586
+        	            				/mnt/c/Projects/Pulumi_ec2_test/value.go:370
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:494
+        	            				/mnt/c/Projects/Pulumi_ec2_test/types.go:606
+        	            				/mnt/c/Projects/Pulumi_ec2_test/asm_amd64.s:1598
+        	Error:      	map[string]string(nil) does not contain "Name"
+        	Test:       	TestInfrastructure
+        	Messages:   	missing a Name tag on server urn:pulumi:stack::project::aws:ec2/instance:Instance::web-server-www
+--- FAIL: TestInfrastructure (0.01s)
+FAIL
+exit status 1
+FAIL	Pulumi_ec2_test	1.325s

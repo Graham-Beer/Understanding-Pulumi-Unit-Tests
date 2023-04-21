@@ -1,0 +1,3 @@
+name: Pulumi_ec2_test
+runtime: go
+description: A minimal Go Pulumi program
